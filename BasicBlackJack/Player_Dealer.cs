@@ -18,7 +18,7 @@ namespace BasicBlackJack
 
         public bool MustStay()
         {
-            if (this.m_iHandValue >= 17 && this.m_iHandValue <= 21)
+            if (this.m_iHandValue >= 17)
                 return true;
 
             return false;

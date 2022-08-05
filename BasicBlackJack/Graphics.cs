@@ -37,7 +37,7 @@ namespace BasicBlackJack
             }
         }
 
-        public void Draw(Player player, Player_Dealer dealer)
+        public void Draw(Player player, Player_Dealer dealer, bool continueGame)
         {
             Console.Clear();
             origRow = Console.CursorTop;
@@ -45,7 +45,7 @@ namespace BasicBlackJack
 
             DrawDealerPlayArea(dealer.Hand);
             DrawPlayerPlayArea(player.Hand);
-            DrawPlayerOptions(player.WentBust(), player.Has21());
+            DrawPlayerOptions(continueGame);
         }
 
         private void DrawDealerPlayArea(List<Card_Standard_52> dealerHand)
@@ -106,20 +106,19 @@ namespace BasicBlackJack
 
 
 
-        private void DrawPlayerOptions(bool playerWentBust, bool playerHas21)
+        private void DrawPlayerOptions(bool continueGame)
         {
-            if (playerWentBust || playerHas21)
-            {
-                Console.WriteLine("\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557");
-                Console.WriteLine("\u2551 New Game?(y/n)         \u2551");
-                Console.WriteLine("\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D");
-
-            }
-            else
+            if (continueGame)
             {
                 Console.WriteLine("\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557");
                 Console.WriteLine("\u2551 1.Hit   2.Stay         \u2551");
                 Console.WriteLine("\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D");
+            }
+            else {
+                Console.WriteLine("\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557");
+                Console.WriteLine("\u2551 New Game?(y/n)         \u2551");
+                Console.WriteLine("\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D");
+
             }
         }
     }
